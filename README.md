@@ -1,3 +1,6 @@
+## Introduction
+* Why: To make this great nativebase example not depend on Expo.
+* How: basically follow instructions [here](https://gitlab.com/applification/react-native-custom-fonts)
 
 ## React Native Seed v1.0.0
 
