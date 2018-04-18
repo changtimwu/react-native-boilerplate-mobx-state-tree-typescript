@@ -19,7 +19,6 @@
     "typescript": "2.6.2",
     "husky": "0.14.3",
     "ts-jest": "22.0.0",
-    "jest-expo": "^24.0.0",
     "react-test-renderer": "16.2.0"
   },
   "scripts": {
