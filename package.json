@@ -21,6 +21,13 @@
     "ts-jest": "22.0.0",
     "react-test-renderer": "16.2.0"
   },
+  "rnpm":{
+    "assets": [
+      "./node_modules/native-base/Fonts/Roboto.ttf",
+      "./node_modules/native-base/Fonts/Roboto_medium.ttf",
+      "./node_modules/native-base/Fonts/Ionicons.ttf"
+    ]
+  },
   "scripts": {
     "start": "react-native start",
     "jest": "node node_modules/jest/bin/jest.js",
