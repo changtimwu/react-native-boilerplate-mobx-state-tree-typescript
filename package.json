@@ -37,7 +37,7 @@
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
     "lint": "tslint src/**/*.ts",
-    "test": "yarn jest && tslint src/**/*.ts && eslint .",
+    "test": "yarn jest && tslint src/**/*.ts",
     "precommit": "yarn test"
   },
   "jest": {
