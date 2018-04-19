@@ -12,6 +12,10 @@ const routes = [
 		caption: "Blank Page",
 	},
 	{
+		route: "NativeBaseGallery",
+		caption: "NativeBase Gallery",
+	},
+	{
 		route: "Login",
 		caption: "Logout",
 	},
