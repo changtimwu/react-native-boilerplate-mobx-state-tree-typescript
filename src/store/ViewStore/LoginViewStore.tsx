@@ -30,7 +30,8 @@ const Login = types
 			self.passwordError = required ? required : alphaNumeric ? alphaNumeric : maxLength ? maxLength : minLength;
 		}
 		function validateForm() {
-			if (self.emailError === "" && self.passwordError === "" && self.email !== "" && self.password !== "") {
+			// if (self.emailError === "" && self.passwordError === "" && self.email !== "" && self.password !== "") {
+			if (true) {
 				self.isValid = true;
 			}
 		}
