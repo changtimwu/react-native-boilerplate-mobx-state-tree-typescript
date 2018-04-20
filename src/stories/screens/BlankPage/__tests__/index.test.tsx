@@ -1,5 +1,5 @@
 import React from "react";
-import BlankPage from "../index";
+import BlankPage, { TestComp, TPButton, tpstyles } from "../index";
 import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
@@ -7,7 +7,69 @@ configure({ adapter: new Adapter() });
 
 const navigation = { state: jest.fn() };
 
-it("renders correctly", () => {
-	const tree = shallow(<BlankPage navigation={navigation} />)
-	expect(tree).toMatchSnapshot();
-});
+describe("NativeBase", () => {
+	describe("Button", () => {
+		it("render correctly", () => {
+			const tree = shallow(<BlankPage navigation={navigation} />)
+			// console.log('nativebase tree=', tree.debug())
+			expect(tree.find('Styled(Button)')).toHaveLength(1)
+			expect(tree).toMatchSnapshot()
+		})
+	})
+})
+
+describe.skip("ReactNative", () => {
+	describe("Button", () => {
+		let btn
+		beforeEach(() => {
+			let wrapper = shallow(<TestComp />)
+			btn = wrapper.find('Button')
+			// console.log(wrapper.debug())
+			// btn = shallow(wrapper.instance().render())
+		})
+		it("render correctly", () => {
+			expect(btn).toHaveLength(1)
+			expect(btn.contains('before press')).toBe(true)
+		})
+
+		it("can handle press", () => {
+			btn.simulate('press')
+			console.log(btn.debug())
+			expect(btn.contains('after press')).toBe(true)
+		})
+	})
+})
+
+describe("TPButton", () => {
+	describe("Rendering", () => {
+		let wrapper
+		beforeEach(() => {
+			wrapper = shallow(<TPButton label="Submit" onClick={() => { }} />)
+		})
+		it('should render a <TouchableOpacity />', () => {
+			expect(wrapper.find('TouchableOpacity')).toHaveLength(1)
+		})
+		it('should render a label', () => {
+			expect(wrapper.find('Text').contains('Submit')).toBe(true)
+		})
+		it('should have default style', () => {
+			expect(wrapper.find('TouchableOpacity').prop('style')).toEqual(tpstyles.default)
+		})
+		it('should have primary style', () => {
+			let w = shallow(<TPButton label="Submit" type='primary' onClick={() => { }} />)
+			expect(w.find('TouchableOpacity').prop('style')).toEqual(tpstyles.primary)
+		})
+	})
+	describe("Interaction", () => {
+		let wrapper
+		let props
+		beforeEach(() => {
+			props = { label: 'bingo', onClick: jest.fn() }
+			wrapper = shallow(<TPButton {...props} />)
+		})
+		it('should handle press', () => {
+			wrapper.instance().onPress()
+			expect(props.onClick).toHaveBeenCalledTimes(1)
+		})
+	})
+})
