@@ -3,9 +3,11 @@ import BlankPage from "../../stories/screens/BlankPage";
 export interface Props {
 	navigation: any;
 }
-export interface State {}
+export interface State { }
 export default class BlankPageContainer extends React.Component<Props, State> {
 	render() {
-		return <BlankPage navigation={this.props.navigation} />;
+		return (
+			<BlankPage navigation={this.props.navigation} />
+		)
 	}
 }
