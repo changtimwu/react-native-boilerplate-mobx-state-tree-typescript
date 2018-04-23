@@ -1,19 +1,50 @@
 import React from "react";
 import BlankPage, { TestComp, TPButton, tpstyles } from "../index";
 import { shallow, ShallowWrapper, configure } from "enzyme";
+import { ButtonProperties } from 'react-native'
 import Adapter from "enzyme-adapter-react-16";
 
 configure({ adapter: new Adapter() });
 
-const navigation = { state: jest.fn() };
+const fakenav = (navname?: string) => {
+	var nav = {
+		state: {},
+		goBack: jest.fn()
+	}
+	if (navname) {
+		nav.state['params'] = {
+			name: { item: navname }
+		}
+	}
+	return nav
+}
 
-describe("NativeBase", () => {
-	describe("Button", () => {
-		it("render correctly", () => {
-			const tree = shallow(<BlankPage navigation={navigation} />)
-			// console.log('nativebase tree=', tree.debug())
-			expect(tree.find('Styled(Button)')).toHaveLength(1)
-			// expect(tree).toMatchSnapshot()
+describe("BlackPage", () => {
+	describe("Render", () => {
+		it("can render correctly when input navigation has name param", () => {
+			const inputTitle = 'kjdkjsljkas'
+			const w = shallow(<BlankPage navigation={fakenav(inputTitle)} />)
+			let t = w.find('Styled(Body) Styled(Title)')
+			expect(t.children().text()).toEqual(inputTitle)
+			t = w.find('Styled(Content) Styled(Text)')
+			expect(t.children().text()).toEqual(inputTitle)
+		})
+		it("can render correctly when input navigation has no param at all", () => {
+			const w = shallow(<BlankPage navigation={fakenav()} />)
+			let t = w.find('Styled(Body) Styled(Title)')
+			expect(t.children().text()).toEqual("Blank Page")
+			t = w.find('Styled(Content) Styled(Text)')
+			expect(t.children().text()).toEqual("Create Something Awesome . . .")
+		})
+	})
+	describe("Back Button", () => {
+		let btn
+		it("works", () => {
+			let nav = fakenav()
+			const w = shallow(<BlankPage navigation={nav} />)
+			btn = w.find('Styled(Button)').first()
+			btn.props().onPress()
+			expect(nav.goBack).toHaveBeenCalledTimes(1)
 		})
 	})
 })
