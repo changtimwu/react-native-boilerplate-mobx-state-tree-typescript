@@ -1,7 +1,16 @@
-## Introduction
-* Why: To make this great nativebase example not depend on Expo.
-* How: basically follow instructions [here](https://gitlab.com/applification/react-native-custom-fonts)
 
+## Introduction
+* Why?: To make this boilerplate more complete
+
+## What are Modified
+* Remove expo dependency via [instructions here](https://gitlab.com/applification/react-native-custom-fonts)
+* Largely rewrite tests with Enzyme to make it the way beyond snapshots. 
+* add CI/CD
+
+[![CircleCI](https://circleci.com/gh/changtimwu/react-native-boilerplate-mobx-state-tree-typescript.svg?style=svg)](https://circleci.com/gh/changtimwu/react-native-boilerplate-mobx-state-tree-typescript)
+
+Below are original README
+----------------------------------------------------------------------------------------------------
 ## React Native Seed v1.0.0
 
 ### A [React Native](https://facebook.github.io/react-native/docs/getting-started.html) Starter Kit with [NativeBase](https://nativebase.io/) + [React Navigation](https://reactnavigation.org/) + [MobX-State-Tree](https://github.com/mobxjs/mobx-state-tree) Apps (iOS & Android)
