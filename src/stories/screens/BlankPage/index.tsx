@@ -28,6 +28,7 @@ class BlankPage extends React.Component<Props, State> {
 
 				<Content padder>
 					<Text>{param !== undefined ? param.name.item : "Create Something Awesome . . ."}</Text>
+					<TestComp />
 				</Content>
 			</Container>
 		);
@@ -40,15 +41,15 @@ export class TestComp extends React.Component<{}, { cap: string }> {
 		super(props)
 		this.state = { cap: 'before press' }
 	}
-
+	Press() {
+		this.setState({ cap: 'after press' })
+	}
 	render() {
 		return (
 			<RN.Button
-				title="Learn More"
-				onPress={() => { this.setState({ cap: 'after press' }) }}
-			>
-				{this.state.cap}
-			</RN.Button>
+				title={this.state.cap}
+				onPress={() => { this.Press() }}
+			/>
 		)
 	}
 }

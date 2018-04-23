@@ -1,6 +1,6 @@
 import React from "react";
 import BlankPage, { TestComp, TPButton, tpstyles } from "../index";
-import { shallow, configure } from "enzyme";
+import { shallow, ShallowWrapper, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 configure({ adapter: new Adapter() });
@@ -13,29 +13,29 @@ describe("NativeBase", () => {
 			const tree = shallow(<BlankPage navigation={navigation} />)
 			// console.log('nativebase tree=', tree.debug())
 			expect(tree.find('Styled(Button)')).toHaveLength(1)
-			expect(tree).toMatchSnapshot()
+			// expect(tree).toMatchSnapshot()
 		})
 	})
 })
 
-describe.skip("ReactNative", () => {
+describe("ReactNative", () => {
 	describe("Button", () => {
-		let btn
+		let wrapper: ShallowWrapper
+		let btn: ShallowWrapper
 		beforeEach(() => {
-			let wrapper = shallow(<TestComp />)
+			wrapper = shallow(<TestComp />)
 			btn = wrapper.find('Button')
-			// console.log(wrapper.debug())
-			// btn = shallow(wrapper.instance().render())
 		})
 		it("render correctly", () => {
-			expect(btn).toHaveLength(1)
-			expect(btn.contains('before press')).toBe(true)
+			expect(btn.prop('title')).toEqual('before press')
 		})
-
-		it("can handle press", () => {
-			btn.simulate('press')
-			console.log(btn.debug())
-			expect(btn.contains('after press')).toBe(true)
+		it("can handle press", done => {
+			wrapper.simulate('Press')
+			setTimeout(() => {
+				let b = wrapper.find('Button') // we have to find again
+				expect(b.prop('title')).toEqual('after press')
+				done()
+			}, 10)
 		})
 	})
 })
