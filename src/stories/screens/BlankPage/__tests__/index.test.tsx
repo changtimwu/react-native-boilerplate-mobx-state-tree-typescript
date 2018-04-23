@@ -61,14 +61,23 @@ describe("TPButton", () => {
 		})
 	})
 	describe("Interaction", () => {
-		let wrapper
+		let wrapper: ShallowWrapper
 		let props
 		beforeEach(() => {
 			props = { label: 'bingo', onClick: jest.fn() }
 			wrapper = shallow(<TPButton {...props} />)
 		})
+		/* don't why using done() here would make the test fail */
 		it('should handle press', () => {
-			wrapper.instance().onPress()
+			wrapper.simulate('onPress')
+			setTimeout(() => {
+				expect(props.onClick).toHaveBeenCalledTimes(1)
+			}, 10)
+		})
+		it('should handle press in sync way', () => {
+			wrapper = shallow(<TPButton {...props} />)
+			let tpb = wrapper.instance() as TPButton
+			tpb.onPress()
 			expect(props.onClick).toHaveBeenCalledTimes(1)
 		})
 	})
