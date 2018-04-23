@@ -41,15 +41,17 @@ export class TestComp extends React.Component<{}, { cap: string }> {
 		super(props)
 		this.state = { cap: 'before press' }
 	}
-	Press() {
-		this.setState({ cap: 'after press' })
+	changeTitle() {
+		this.setState({ cap: 'title updated' })
 	}
 	render() {
 		return (
-			<RN.Button
-				title={this.state.cap}
-				onPress={() => { this.Press() }}
-			/>
+			<RN.View>
+				<RN.Button
+					title={this.state.cap}
+					onPress={() => { this.changeTitle() }}
+				/>
+			</RN.View>
 		)
 	}
 }
