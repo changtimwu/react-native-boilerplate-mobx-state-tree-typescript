@@ -29,13 +29,20 @@ describe("ReactNative", () => {
 		it("render correctly", () => {
 			expect(btn.prop('title')).toEqual('before press')
 		})
-		it("can handle press", done => {
-			wrapper.simulate('Press')
-			setTimeout(() => {
-				let b = wrapper.find('Button') // we have to find again
-				expect(b.prop('title')).toEqual('after press')
-				done()
-			}, 10)
+		it("can change title via public action", () => {
+			(wrapper.instance() as TestComp).changeTitle()
+			wrapper.update()
+			// you have to find again because the button was actually re-generated due to prop change
+			let b = wrapper.find('Button')
+			expect(b.prop('title')).toEqual('title updated')
+		})
+
+		it("can change title via button press", () => {
+			(btn.props() as ButtonProperties).onPress()
+			wrapper.update()
+			// you have to find again because the button is actually re-generated due to prop change
+			let b = wrapper.find('Button')
+			expect(b.prop('title')).toEqual('title updated')
 		})
 	})
 })
@@ -67,14 +74,7 @@ describe("TPButton", () => {
 			props = { label: 'bingo', onClick: jest.fn() }
 			wrapper = shallow(<TPButton {...props} />)
 		})
-		/* don't why using done() here would make the test fail */
 		it('should handle press', () => {
-			wrapper.simulate('onPress')
-			setTimeout(() => {
-				expect(props.onClick).toHaveBeenCalledTimes(1)
-			}, 10)
-		})
-		it('should handle press in sync way', () => {
 			wrapper = shallow(<TPButton {...props} />)
 			let tpb = wrapper.instance() as TPButton
 			tpb.onPress()
