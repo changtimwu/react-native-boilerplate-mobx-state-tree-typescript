@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { Form, Item, Input, Toast, Icon } from "native-base";
+import { Form, Item, Input, Toast, Icon, Button, Text } from "native-base";
 import { observer, inject } from "mobx-react/native";
 
 import Login from "../../stories/screens/Login";
@@ -9,13 +9,13 @@ export interface Props {
 	navigation: any;
 	loginForm: any;
 }
-export interface State {}
+export interface State { }
 
 @inject("loginForm")
 @observer
 export default class LoginContainer extends React.Component<Props, State> {
-	emailInput: any;
-	pwdinput: any;
+	emailInput: Input;
+	pwdinput: Input;
 	login() {
 		this.props.loginForm.validateForm();
 		if (this.props.loginForm.isValid) {
@@ -45,7 +45,6 @@ export default class LoginContainer extends React.Component<Props, State> {
 						onChangeText={e => form.emailOnChange(e)}
 					/>
 				</Item>
-
 				<Item error={form.passwordError ? true : false} last>
 					<Icon active name="unlock" />
 					<Input
@@ -60,6 +59,10 @@ export default class LoginContainer extends React.Component<Props, State> {
 			</Form>
 		);
 
-		return <Login loginForm={Fields} onLogin={() => this.login()} />;
+		return <Login
+			loginForm={Fields}
+			onLogin={() => this.login()}
+			fillDefault={() => this.props.loginForm.setDefault()}
+		/>;
 	}
 }

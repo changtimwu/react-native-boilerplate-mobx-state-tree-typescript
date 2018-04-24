@@ -5,8 +5,9 @@ import { Container, Content, Header, Body, Title, Button, Text, View, Icon, Foot
 export interface Props {
 	loginForm: any;
 	onLogin: Function;
+	fillDefault: Function;
 }
-export interface State {}
+export interface State { }
 class Login extends React.Component<Props, State> {
 	render() {
 		return (
@@ -25,6 +26,11 @@ class Login extends React.Component<Props, State> {
 					<View padder>
 						<Button block onPress={() => this.props.onLogin()}>
 							<Text>Login</Text>
+						</Button>
+					</View>
+					<View padder>
+						<Button onPress={() => this.props.fillDefault()}>
+							<Text>Load default account</Text>
 						</Button>
 					</View>
 				</Content>
