@@ -1,7 +1,6 @@
 import React from "react";
 import Login from "../index"
-import { shallow, ShallowWrapper, configure } from "enzyme"
-import { ButtonProperties } from 'react-native'
+import { shallow, configure } from "enzyme"
 import Adapter from "enzyme-adapter-react-16"
 
 configure({ adapter: new Adapter() });
