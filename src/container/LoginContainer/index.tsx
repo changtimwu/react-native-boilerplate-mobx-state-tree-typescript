@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { Form, Item, Input, Toast, Icon, Button, Text } from "native-base";
+import { Form, Item, Input, Toast, Icon } from "native-base";
 import { observer, inject } from "mobx-react/native";
 
 import Login from "../../stories/screens/Login";
