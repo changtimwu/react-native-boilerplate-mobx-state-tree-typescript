@@ -47,7 +47,6 @@
     "build": "npm run clean && npm run tsc --",
     "lint": "tslint src/**/*.ts",
     "test": "yarn jest && tslint src/**/*.ts",
-    "precommit": "yarn test",
     "coverage": "yarn jest --coverage;echo 'check report coverage/lcov-report/index.html'"
   },
   "jest": {
