@@ -19,7 +19,7 @@ const fakenav = (navname?: string) => {
 	return nav
 }
 
-describe("BlackPage", () => {
+describe("BlankPage", () => {
 	describe("Render", () => {
 		it("can render correctly when input navigation has name param", () => {
 			const inputTitle = 'kjdkjsljkas'
