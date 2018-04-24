@@ -37,3 +37,8 @@ jobs:
       - run: yarn jest -u
       # run tests!
       - run: yarn test
+notify:
+  webhooks:
+    # A list of hook hashes, containing the url field
+    # gitter hook
+    - url: https://webhooks.gitter.im/e/83edabceb89c6dd12975
