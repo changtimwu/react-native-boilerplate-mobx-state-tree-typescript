@@ -4,6 +4,7 @@ import Login from "../index";
 import renderer from "react-test-renderer";
 
 const onLogin = jest.fn();
+const fillDefault = jest.fn();
 const loginForm = (
 	<form>
 	</form>
@@ -11,6 +12,6 @@ const loginForm = (
 
 
 it("renders correctly", () => {
-	const tree = renderer.create(<Login onLogin={onLogin} loginForm={loginForm} />).toJSON();
+	const tree = renderer.create(<Login onLogin={onLogin} loginForm={loginForm} fillDefault={fillDefault} />).toJSON();
 	expect(tree).toMatchSnapshot();
 });
