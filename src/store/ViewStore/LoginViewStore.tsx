@@ -44,6 +44,8 @@ const Login = types
 		function setDefault() {
 			self.email = "abc@xmen.com"
 			self.password = "1234567890"
+			validateEmail()
+			validatePassword()
 		}
 		return { emailOnChange, validateEmail, passwordOnChange, validatePassword, validateForm, clearStore, setDefault };
 	});
