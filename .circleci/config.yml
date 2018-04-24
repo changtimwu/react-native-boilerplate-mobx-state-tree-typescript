@@ -38,4 +38,4 @@ jobs:
       - run: yarn test
 notify:
   webhooks:
-    - url: https://webhooks.gitter.im/e/31b74335c82bca0d752b
+    - url: 'https://webhooks.gitter.im/e/81e6e837346108547f96'
