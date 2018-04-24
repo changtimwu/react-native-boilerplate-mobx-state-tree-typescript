@@ -42,7 +42,11 @@ const Login = types
 			self.password = "";
 			self.passwordError = "";
 		}
-		return { emailOnChange, validateEmail, passwordOnChange, validatePassword, validateForm, clearStore };
+		function setDefault() {
+			self.email = "abc@xmen.com"
+			self.password = "1234567890"
+		}
+		return { emailOnChange, validateEmail, passwordOnChange, validatePassword, validateForm, clearStore, setDefault };
 	});
 
 const LoginStore = Login.create({
