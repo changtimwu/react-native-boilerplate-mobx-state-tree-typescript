@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Container, Header, Title, Content, Text, ActionSheet, Button, Icon, Left, Right, Body } from "native-base";
+import Web3Exp from './web3exp'
 let BUTTONS = [
 	{ text: "Option 0", icon: "american-football", iconColor: "#2c8ef4" },
 	{ text: "Option 1", icon: "analytics", iconColor: "#f42ced" },
@@ -16,6 +17,25 @@ export interface Props {
 }
 export interface State { }
 class NativeBaseGalleryPage extends React.Component<Props, State> {
+	showAction() {
+		ActionSheet.show(
+			{
+				options: BUTTONS,
+				cancelButtonIndex: CANCEL_INDEX,
+				destructiveButtonIndex: DESTRUCTIVE_INDEX,
+				title: "Testing ActionSheet"
+			},
+			buttonIndex => {
+				this.setState({ clicked: BUTTONS[buttonIndex] });
+			}
+		)
+	}
+	web3init() {
+		let w3 = new Web3Exp()
+		w3.netinfo()
+		w3.ethsysInfo()
+		w3.blkinfo()
+	}
 	render() {
 		const param = this.props.navigation.state.params;
 		return (
@@ -35,21 +55,8 @@ class NativeBaseGalleryPage extends React.Component<Props, State> {
 				</Header>
 
 				<Content padder>
-					<Button
-						onPress={() => {
-							ActionSheet.show(
-								{
-									options: BUTTONS,
-									cancelButtonIndex: CANCEL_INDEX,
-									destructiveButtonIndex: DESTRUCTIVE_INDEX,
-									title: "Testing ActionSheet"
-								},
-								buttonIndex => {
-									this.setState({ clicked: BUTTONS[buttonIndex] });
-								}
-							)
-						}}
-					>
+					<Button onPress={() => { this.web3init() }}><Text>Web3 Init</Text></Button>
+					<Button onPress={() => { this.showAction() }} >
 						<Text>Actionsheet</Text>
 					</Button>
 				</Content>
