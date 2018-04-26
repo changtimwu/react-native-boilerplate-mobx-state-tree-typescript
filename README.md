@@ -7,6 +7,13 @@
 * Remove expo dependency via [instructions here](https://gitlab.com/applification/react-native-custom-fonts)
 * Largely rewrite tests with Enzyme to make it the way beyond snapshots.
 * add CI
+* add Web3
+
+## some WTF
+`web3` depends `node-gyp` and it must be installed with npm
+```
+npm install web3
+```
 
 Below are original README
 ----------------------------------------------------------------------------------------------------
