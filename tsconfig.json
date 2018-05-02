@@ -22,11 +22,6 @@
 			"jest"
 		]
 	},
-	"types": [
-		"react",
-		"react-native",
-		"jest"
-	],
 	"exclude": [
 		"android",
 		"App.js",
