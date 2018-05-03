@@ -12,6 +12,10 @@ const routes = [
 		caption: "Blank Page",
 	},
 	{
+		route: "WebPage",
+		caption: "Web Page"
+	},
+	{
 		route: "NativeBaseGallery",
 		caption: "NativeBase Gallery",
 	},
@@ -24,7 +28,7 @@ const routes = [
 export interface Props {
 	navigation: any;
 }
-export interface State {}
+export interface State { }
 const resetAction = NavigationActions.reset({
 	index: 0,
 	actions: [NavigationActions.navigate({ routeName: "Login" })],

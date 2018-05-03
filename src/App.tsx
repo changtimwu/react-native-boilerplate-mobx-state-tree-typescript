@@ -8,6 +8,7 @@ const deviceWidth = Dimensions.get("window").width;
 import Login from "./container/LoginContainer";
 import Home from "./container/HomeContainer";
 import BlankPage from "./container/BlankPageContainer";
+import WebPage from "./container/WebpageContainer";
 import NativeBaseGallery from "./container/NativeBaseGalleryContainer";
 
 import Sidebar from "./container/SidebarContainer";
@@ -26,6 +27,7 @@ const Drawer = DrawerNavigator(
 const App = StackNavigator(
 	{
 		Login: { screen: Login },
+		WebPage: { screen: WebPage },
 		BlankPage: { screen: BlankPage },
 		Drawer: { screen: Drawer },
 		NativeBaseGallery: { screen: NativeBaseGallery }
